@@ -1,6 +1,6 @@
 # springstead-app1-impl
 Hi and welcome as this is my user guide to my implementation on the todoList. 
-
+The link to my video is https://youtu.be/iEr4K4zPHE4
 In my application there three text fields that are used to get data from the user. These being one for the date, one for the description, and one being for if the task has been completed or not. When the user has filled all three of these boxes they can press the add button. 
 This button will take all three text boxes and combine them togeter with _ as the space inbetween the fields. It is important that in the field for is it complete or not that the user enters a 1 or 0. This _ is important because it allows the code to parse through the information because it is stored in an arrayList. 
 
