@@ -1,107 +1,89 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-class Applications{
+class TodoListApplication{
     +start;
     +main;
 }
 class ApplicationsController{
     -ArrayList<String> todoList
-
-    -Button addTodoListButton;
-    -Button buttonSaveName;
-    -DatePicker date;
-    -TextField description;
-    - Button newButton;
-    -TextField newTitle;
-    -Button openButton;
-    -Button removeButton;
-    -TextField removeNumber;
-    -Button saveButton;
-    -Button showAllButton;
-    -Button showCompletedButton;
-    -Button showUncompletedButton;
-    -TableColumn<?, ?> tableComplete;
-    -TableColumn<?, ?> tableDate;
-    -TableColumn<?, ?> tableDescription;
-    -TextField editInfoCompleted;
-    -Button editDataButton
-    -DatePicker editedDate
-    -TextField editedDescription
-    -TextField lineNumberEditInformation
-    +ArrayList<String> getTodoList
+    -TextField completed
+    -DatePicker date
+    -TextField description
+    -Button newButton
+    -Button openButton
+    -Button removeButton
+    -Button saveButton
+    -Button showAllButton
+    -Button showCompletedButton
+    -Button showUncompletedButton
+    -TableView<todoItem> tableOfItems
+    -TableColumn<todoItem, String> tableDate
+    -TableColumn<todoItem, String> tableDescription
+    -TableColumn<todoItem, String> tableComplete
+    -Button clearButton
+    +ArrayList getTodoList()
+    +initialize(URL location, ResourceBundle resources)
     +int CompletedButtonClicked(ActionEvent event)
-    +ArrayList<String> removeClicked(ActionEvent event)
-    +int showAllClicked(ActionEvent event)
-    +int clickedEditInformation(ActionEvent event)
     +ArrayList<String> clickAddTodoList(ActionEvent event)
     +clickedSaveFile(ActionEvent event)
-    +clickedSaveName(ActionEvent event)
-    +int clickedShowUncompleted(ActionEvent event)
-    +newFileClicked(ActionEvent event)
+    +int clickedShowUncompleted(Action event)
     +openFileClicked(ActionEvent event)
+    +ArrayList<String>removeClicked(ActionEvent event)
+    +int showAllClicked(ActionEvent event)
+    +clearedButtonClicked(ActionEvent event)
 
 }
 class addItems{
     -ArrayList<String> newTodoList
-    +ArrayList<String> addTask(String date,String description, int completed )
+    +ArrayList<String> addTask(LocalDate date, String description, String completed,ArrayList todoList)
+}
+
+class clearEverything{
+    +ArrayList<String> clearArrayList();
+}
+class fileSaver{
+    +savingFile(File file, ArrayList savedList);
+}
+class modifyShown{
+    +ArrayList modifyArrayList(ArrayList oldArrayList, String newText, String oldText, int number);
+}
+class parsedOpenedFile{
+    +parseInformation(String words);
+    +String getDate();
+    +String getDescription();
+    +String getCompleted();
 }
 class removeItems{
     -ArrayList<String> newTodoList
-    +ArrayList<String> removeTask(int indexNumber)
+    +ArrayList removeTask(String value, ArrayList todoList);
 }
-class openNewFile{
-    +openNewFile(String fileName)
+class showSomething{
+    +int showNonCompleted(String words)
+    +String getDate();
+    +String getDescription();
+    +String getCompleted();
+}
+class todoItem{
+    -SimpleStringProperty date
+    -SimpleStringProperty description
+    -SimpleStringProperty Complete
+    +todItem(String date, String description, String complete);
+    +String getDate()
+    +setDate(String newDate)
+    +String getDescription()
+    +setDescription(String description)
+    +String getComplete()
+    +setComplete(String completed)
+}
+ApplicationsController --- TodoListApplication
+ApplicationsController --- addItems
+ApplicationsController --- clearEverything
+ApplicationsController --- fileSaver
+ApplicationsController --- modifyShown
+ApplicationsController --- parsedOpenedFile
+ApplicationsController --- removeItems
+ApplicationsController --- showSomething
+ApplicationsController --- todoItem
 
-}
-class saveFile{
-     +saveFile(String fileName)
-}
-class showNonCompleted{
-    -int counter
-    +int showNonCompleted()
-}
-class showAll{
-    -int counter
-     +int showAll()
-}
-class showCompleted{
-    -int counter
-    +int showComplete()
-}
-class openFile{
-    +openFile(String fileName)
-}
-class setTitle{
-   +String setTitle(String title)
-
-}
-class editDate{
-    -ArrayList<String> newTodoList
-    +ArrayList<String> editDate(String newDate ,int index)
-
-}
-class editDescription{
-    -ArrayList<String> newTodoList
-    +ArrayList<String> editDescription(String newDescription, int index)
-}
-class editCompleted{
-    -ArrayList<String> newTodoList
-    +ArrayList<String> editCompleted(int completed, int index)
-
-}
-
-Applications --- ApplicationsController
-ApplicationsController <|-- addItems
-ApplicationsController <|-- removeItems
-ApplicationsController <|-- openNewFile
-ApplicationsController <|-- saveFile
-ApplicationsController <|-- showNonCompleted
-ApplicationsController <|-- showAll
-ApplicationsController <|-- showCompleted
-ApplicationsController <|-- openFile
-ApplicationsController <|-- setTitle
-ApplicationsController <|-- editDate
-ApplicationsController <|-- editDescription
-ApplicationsController <|-- editCompleted
 @enduml

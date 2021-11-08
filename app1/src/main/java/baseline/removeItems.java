@@ -2,15 +2,15 @@ package baseline;
 
 import java.util.ArrayList;
 
-public class removeItems extends ApplicationsController {
+public class removeItems  {
     ArrayList<String> newTodoList = new ArrayList<>();
 
-    public ArrayList removeTask(int indexNumber){
-
-        //sets the newTodoList to the one in super class
-        //use getTodoList
+    public ArrayList removeTask(String value,ArrayList todoList){
         //deletes the information that is contained at that index
-        //update the items in the gui
+        todoList.remove(value);
+
+
+        //returns updated List
         return newTodoList;
     }
 
