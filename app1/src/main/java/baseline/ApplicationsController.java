@@ -224,14 +224,17 @@ public class ApplicationsController implements Initializable {
         clearEverything clear = new clearEverything();
         todoList = clear.clearArrayList();
         File file = fileChooser.showOpenDialog(new Stage());
-        Scanner scanner = new Scanner(file);
-        int i = 0;
-        // goes through every line
-        while(scanner.hasNextLine()){
-           todoList.add((scanner.nextLine()));
-           i ++;
+        try{
+            Scanner scanner = new Scanner(file);
+            while(scanner.hasNextLine()){
+                todoList.add((scanner.nextLine()));
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
         }
-        for (i = 0; i < todoList.size(); i++ ){
+        // goes through every line
+
+        for (int i = 0; i < todoList.size(); i++ ){
            parser.parseInformation(todoList.get(i));
            String completed1 = parser.getCompleted();
            String date1 = parser.getDate();
@@ -239,6 +242,7 @@ public class ApplicationsController implements Initializable {
            todoItem todoItem = new todoItem(date1, description1, completed1);
            tableOfItems.getItems().add(todoItem);
         }
+
     }
 
     @FXML

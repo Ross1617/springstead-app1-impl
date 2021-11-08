@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class fileSaver {
-    public void savingFile(File file, ArrayList savedList) throws FileNotFoundException {
+    public void savingFile(File file, ArrayList<String> savedList) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(file);
         int lines = savedList.size();
 

@@ -8,7 +8,7 @@ public class addItems extends ApplicationsController {
     ArrayList<String> newTodoList = new ArrayList<>();
 
 
-    public ArrayList<String> addTask(LocalDate date, String description, String completed,ArrayList todoList){
+    public ArrayList<String> addTask(LocalDate date, String description, String completed,ArrayList<String> todoList){
 
         // gets the information in the date field and saves it
         // gets the information in the description and saves it

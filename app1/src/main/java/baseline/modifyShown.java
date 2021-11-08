@@ -3,7 +3,7 @@ package baseline;
 import java.util.ArrayList;
 
 public class modifyShown {
-    public ArrayList modifyArrayList(ArrayList oldArrayList, String newText, String oldText, int number){
+    public ArrayList<String> modifyArrayList(ArrayList<String> oldArrayList, String newText, String oldText, int number){
         for (int i = 0; i < oldArrayList.size(); i ++){
             if (oldText.equals(oldArrayList.get(i))){
                 String old = (String) oldArrayList.get(i);
